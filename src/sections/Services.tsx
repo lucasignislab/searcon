@@ -1,10 +1,12 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Button } from "@/components/ui/button"
-import { CheckCircle2 } from "lucide-react"
+import { CheckCircle2, ArrowRight } from "lucide-react"
+import { Link } from "react-router"
 
 const services = [
   {
     id: "pmoc",
+    slug: "pmoc",
     label: "PMOC",
     title: "PMOC — Plano de Manutenção, Operação e Controle",
     description:
@@ -20,6 +22,7 @@ const services = [
   },
   {
     id: "manutencao",
+    slug: "manutencao-sistemas-centrais",
     label: "Manutenção",
     title: "Manutenção Preventiva e Corretiva",
     description:
@@ -35,6 +38,7 @@ const services = [
   },
   {
     id: "dutos",
+    slug: "limpeza-de-dutos",
     label: "Limpeza de Dutos",
     title: "Limpeza e Higienização de Dutos",
     description:
@@ -50,6 +54,7 @@ const services = [
   },
   {
     id: "instalacao",
+    slug: "instalacoes-e-obras",
     label: "Projetos e Instalação",
     title: "Projeto, Execução e Instalação",
     description:
@@ -109,9 +114,16 @@ export default function Services() {
                       </li>
                     ))}
                   </ul>
-                  <Button asChild className="mt-8 bg-brand-500 font-bold hover:bg-brand-600">
-                    <a href="#contato">Solicitar contato</a>
-                  </Button>
+                  <div className="mt-8 flex flex-wrap items-center gap-4">
+                    <Button asChild className="bg-brand-500 font-bold hover:bg-brand-600">
+                      <Link to={`/servicos/${s.slug}`}>
+                        Conheça o serviço <ArrowRight className="h-4 w-4" />
+                      </Link>
+                    </Button>
+                    <Button asChild variant="outline" className="border-brand-500 font-bold text-brand-600 hover:bg-brand-50">
+                      <a href="#contato">Solicitar contato</a>
+                    </Button>
+                  </div>
                 </div>
               </div>
             </TabsContent>

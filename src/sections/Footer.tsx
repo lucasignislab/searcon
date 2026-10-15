@@ -1,11 +1,12 @@
+import { Link } from "react-router"
 import { Phone, Mail, MapPin, Linkedin, Instagram, Facebook, Youtube } from "lucide-react"
 
 const serviceLinks = [
-  "PMOC — Plano de Manutenção, Operação e Controle",
-  "Manutenção Preventiva e Corretiva",
-  "Limpeza e Higienização de Dutos",
-  "Projeto, Execução e Instalação",
-  "Manutenção em Ar-Condicionado de Painel",
+  { label: "PMOC — Plano de Manutenção, Operação e Controle", to: "/servicos/pmoc" },
+  { label: "Manutenção em Sistemas Centrais", to: "/servicos/manutencao-sistemas-centrais" },
+  { label: "Limpeza e Higienização de Dutos", to: "/servicos/limpeza-de-dutos" },
+  { label: "Instalações e Obras", to: "/servicos/instalacoes-e-obras" },
+  { label: "Manutenção em Ar-Condicionado de Painel", to: "/servicos/ar-condicionado-de-painel" },
 ]
 
 const social = [
@@ -45,8 +46,8 @@ export default function Footer() {
           <h3 className="font-bold text-white">Serviços</h3>
           <ul className="mt-4 space-y-2.5 text-sm">
             {serviceLinks.map((s) => (
-              <li key={s}>
-                <a href="#servicos" className="hover:text-cyan-brand">{s}</a>
+              <li key={s.to}>
+                <Link to={s.to} className="hover:text-cyan-brand">{s.label}</Link>
               </li>
             ))}
           </ul>

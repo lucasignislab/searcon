@@ -4,12 +4,12 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Menu, Phone, Mail } from "lucide-react"
 
 const navItems = [
-  { label: "Serviços", href: "#servicos" },
-  { label: "Diferenciais", href: "#diferenciais" },
-  { label: "Segmentos", href: "#segmentos" },
-  { label: "Quem Somos", href: "#quem-somos" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Contato", href: "#contato" },
+  { label: "Serviços", href: "/#servicos" },
+  { label: "Diferenciais", href: "/#diferenciais" },
+  { label: "Segmentos", href: "/#segmentos" },
+  { label: "Quem Somos", href: "/#quem-somos" },
+  { label: "FAQ", href: "/#faq" },
+  { label: "Contato", href: "/#contato" },
 ]
 
 export default function Header() {
@@ -36,7 +36,7 @@ export default function Header() {
 
       {/* Navegação principal */}
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4">
-        <a href="#top" className="flex items-center">
+        <a href="/" className="flex items-center">
           <img src="/images/logo-searcon.png" alt="Searcon Ar Condicionado" className="h-10 w-auto" />
         </a>
 
@@ -54,7 +54,7 @@ export default function Header() {
 
         <div className="hidden items-center gap-3 lg:flex">
           <Button asChild className="bg-brand-500 font-bold hover:bg-brand-600">
-            <a href="#contato">Solicite um Orçamento</a>
+            <a href="/#contato">Solicite um Orçamento</a>
           </Button>
         </div>
 
@@ -78,7 +78,7 @@ export default function Header() {
                 </a>
               ))}
               <Button asChild className="mt-4 bg-brand-500 font-bold hover:bg-brand-600">
-                <a href="#contato" onClick={() => setOpen(false)}>
+                <a href="/#contato" onClick={() => setOpen(false)}>
                   Solicite um Orçamento
                 </a>
               </Button>
