@@ -1,10 +1,11 @@
 import { useState } from "react"
+import { Link } from "react-router"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Menu, Phone, Mail } from "lucide-react"
+import { services } from "@/data/services"
+import { Menu, Phone, Mail, ChevronDown, ChevronRight } from "lucide-react"
 
 const navItems = [
-  { label: "Serviços", href: "/#servicos" },
   { label: "Diferenciais", href: "/#diferenciais" },
   { label: "Segmentos", href: "/#segmentos" },
   { label: "Quem Somos", href: "/#quem-somos" },
@@ -14,6 +15,7 @@ const navItems = [
 
 export default function Header() {
   const [open, setOpen] = useState(false)
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false)
 
   return (
     <header className="sticky top-0 z-50 w-full bg-white shadow-sm">
@@ -41,6 +43,34 @@ export default function Header() {
         </a>
 
         <nav className="hidden items-center gap-7 lg:flex">
+          {/* Dropdown de Serviços (hover) */}
+          <div className="group relative">
+            <a
+              href="/#servicos"
+              className="flex items-center gap-1 text-sm font-semibold text-gray-700 transition-colors group-hover:text-brand-500"
+            >
+              Serviços
+              <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180" />
+            </a>
+            <div className="invisible absolute left-1/2 top-full z-50 w-80 -translate-x-1/2 pt-3 opacity-0 transition-all duration-150 group-hover:visible group-hover:opacity-100">
+              <div className="overflow-hidden rounded-xl border border-gray-100 bg-white shadow-xl">
+                {services.map((s) => (
+                  <Link
+                    key={s.slug}
+                    to={`/servicos/${s.slug}`}
+                    className="flex items-center justify-between gap-3 border-b border-gray-50 px-5 py-3.5 transition-colors last:border-0 hover:bg-brand-50"
+                  >
+                    <div>
+                      <span className="block text-sm font-bold text-brand-900">{s.shortTitle}</span>
+                      <span className="mt-0.5 line-clamp-1 block text-xs text-gray-500">{s.subtitle}</span>
+                    </div>
+                    <ChevronRight className="h-4 w-4 shrink-0 text-brand-500" />
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+
           {navItems.map((item) => (
             <a
               key={item.href}
@@ -67,6 +97,31 @@ export default function Header() {
           </SheetTrigger>
           <SheetContent side="right" className="w-72">
             <nav className="mt-8 flex flex-col gap-4">
+              {/* Serviços expansível no mobile */}
+              <div>
+                <button
+                  onClick={() => setMobileServicesOpen((v) => !v)}
+                  className="flex w-full items-center justify-between text-base font-semibold text-gray-800 hover:text-brand-500"
+                >
+                  Serviços
+                  <ChevronDown className={`h-4 w-4 transition-transform ${mobileServicesOpen ? "rotate-180" : ""}`} />
+                </button>
+                {mobileServicesOpen && (
+                  <div className="mt-3 flex flex-col gap-3 border-l-2 border-brand-100 pl-4">
+                    {services.map((s) => (
+                      <Link
+                        key={s.slug}
+                        to={`/servicos/${s.slug}`}
+                        onClick={() => setOpen(false)}
+                        className="text-sm font-medium text-gray-600 hover:text-brand-500"
+                      >
+                        {s.shortTitle}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+
               {navItems.map((item) => (
                 <a
                   key={item.href}
