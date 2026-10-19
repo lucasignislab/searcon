@@ -6,7 +6,7 @@ import { services } from "@/data/services"
 import { Menu, Phone, Mail, ChevronDown, ChevronRight } from "lucide-react"
 
 const navItems = [
-  { label: "Diferenciais", href: "/#diferenciais" },
+  { label: "Diferenciais", href: "/diferenciais" },
   { label: "Segmentos", href: "/#segmentos" },
   { label: "Quem Somos", href: "/#quem-somos" },
   { label: "FAQ", href: "/#faq" },

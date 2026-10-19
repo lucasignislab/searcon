@@ -1,3 +1,4 @@
+import { Link } from "react-router"
 import { Button } from "@/components/ui/button"
 import { QrCode, Users, Bot, Wrench } from "lucide-react"
 
@@ -37,9 +38,14 @@ export default function Differentials() {
               Climatização sem dor de cabeça começa com controle: o nosso é digital, documentado e auditável.
             </p>
           </div>
-          <Button asChild size="lg" className="bg-cyan-brand font-bold text-brand-950 hover:bg-white">
-            <a href="#contato">Conhecer na prática</a>
-          </Button>
+          <div className="flex flex-wrap gap-3">
+            <Button asChild size="lg" className="bg-cyan-brand font-bold text-brand-950 hover:bg-white">
+              <Link to="/diferenciais">Ver todos os diferenciais</Link>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="border-white/40 bg-transparent font-bold text-white hover:bg-white/10">
+              <a href="#contato">Conhecer na prática</a>
+            </Button>
+          </div>
         </div>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
